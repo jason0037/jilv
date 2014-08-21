@@ -36,13 +36,16 @@ gem 'ckeditor_rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use debugger
-gem 'debugger', group: [:development, :test]
-
+if RUBY_VERSION < '2.0'
+  gem 'debugger-pry', require: 'debugger/pry', group: :development
+  # Use debugger
+  gem 'debugger', group: [:development, :test]
+else
+  gem 'pry-byebug'
+end
 
 gem 'actionpack-action_caching'
 gem 'activerecord-session_store'
-gem 'debugger-pry', require: 'debugger/pry', group: :development
 gem 'compass-rails'
 gem 'compass-recipes'
 gem 'dynamic_form'
